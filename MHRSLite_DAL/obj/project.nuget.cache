@@ -1,13 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "WVAY/RxYPyCVa+aiUBZ+W2YUdH/o/MK9qYD86YeI/9jcqpYdu+qWEC1yQbwXkliTmDjt/Yn3q4ecMANMaI2z9A==",
+  "dgSpecHash": "l+QbQItAVDSnmLADNA8hNGjd6nvWH1Y+LMjF8Wg3hdMHnWzJ7WXsZeGSW4gkLnZAIW+7Diw7HAVRd9xYOInc4w==",
   "success": true,
   "projectFilePath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.aspnet.identity.core\\2.2.3\\microsoft.aspnet.identity.core.2.2.3.nupkg.sha512",
-    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.aspnet.identity.entityframework\\2.2.3\\microsoft.aspnet.identity.entityframework.2.2.3.nupkg.sha512",
+    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.14\\microsoft.aspnetcore.cryptography.internal.5.0.14.nupkg.sha512",
+    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\5.0.14\\microsoft.aspnetcore.cryptography.keyderivation.5.0.14.nupkg.sha512",
+    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\5.0.14\\microsoft.aspnetcore.identity.entityframeworkcore.5.0.14.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.data.sqlclient\\2.0.1\\microsoft.data.sqlclient.2.0.1.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.0.1\\microsoft.data.sqlclient.sni.runtime.2.0.1.nupkg.sha512",
@@ -23,6 +23,8 @@
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\5.0.2\\microsoft.extensions.dependencyinjection.5.0.2.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\5.0.0\\microsoft.extensions.dependencyinjection.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.identity.core\\5.0.14\\microsoft.extensions.identity.core.5.0.14.nupkg.sha512",
+    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.identity.stores\\5.0.14\\microsoft.extensions.identity.stores.5.0.14.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.logging\\5.0.0\\microsoft.extensions.logging.5.0.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\5.0.0\\microsoft.extensions.logging.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\microsoft.extensions.options\\5.0.0\\microsoft.extensions.options.5.0.0.nupkg.sha512",
@@ -105,36 +107,5 @@
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
     "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
-  "logs": [
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'EntityFramework 6.1.0' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "EntityFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.Core 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.Core",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    },
-    {
-      "code": "NU1701",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Package 'Microsoft.AspNet.Identity.EntityFramework 2.2.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework '.NETCoreApp,Version=v3.1'. This package may not be fully compatible with your project.",
-      "libraryId": "Microsoft.AspNet.Identity.EntityFramework",
-      "targetGraphs": [
-        ".NETCoreApp,Version=v3.1"
-      ]
-    }
-  ]
+  "logs": []
 }
