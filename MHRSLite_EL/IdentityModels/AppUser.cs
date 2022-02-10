@@ -9,20 +9,25 @@ namespace MHRSLite_EL.IdentityModels
 {
     public class AppUser : IdentityUser
     {
-        //kullanıcı özellikleri girilecek,
-        [StringLength(50)]
+        //kullanıcı özellikleri girilecek
+        [Required]
+        [StringLength(50,MinimumLength =2,ErrorMessage ="Adınız en az 2 en fazla 50 karakter olmalıdır!")]
         public string Name { get; set; }
-        [StringLength(50)]
+
+        [Required]
+        [StringLength(50, MinimumLength = 2, ErrorMessage = "Soyadınız en az 2 en fazla 50 karakter olmalıdır!")]
         public string Surname { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime RegisterDate { get; set; } = DateTime.Now;
+
         public string Picture { get; set; }
 
         [DataType(DataType.Date)]
         public DateTime? BirthDate { get; set; }
 
         //Gender alma(Cinsiyet)
+        [Required(ErrorMessage ="Cinsiyet seçimi gereklidir!")]
         public Genders Gender { get; set; }
 
     }
