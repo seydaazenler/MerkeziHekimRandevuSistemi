@@ -3,6 +3,7 @@ using MHRSLite_EL;
 using MHRSLite_EL.Enums;
 using MHRSLite_EL.IdentityModels;
 using MHRSLite_UI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.WebUtilities;
@@ -137,26 +138,26 @@ namespace MHRSLite_UI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmEmail(string userId,string code)
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
         {
             try
             {
-                if (userId==null || code==null)
+                if (userId == null || code == null)
                 {
                     return NotFound("Sayfa bulunamadı!");
                 }
                 var user = await _userManager.FindByIdAsync(userId);
-                if (user==null)
+                if (user == null)
                 {
                     return NotFound("Kullanıcı bulunamadı!");
                 }
                 code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-                var result = await  _userManager.ConfirmEmailAsync(user, code);
+                var result = await _userManager.ConfirmEmailAsync(user, code);
 
                 if (result.Succeeded)
                 {
                     //user pasif rolde mi ?
-                    if (_userManager.IsInRoleAsync(user,RoleNames.Passive.ToString()).Result)
+                    if (_userManager.IsInRoleAsync(user, RoleNames.Passive.ToString()).Result)
                     {
                         await _userManager.RemoveFromRoleAsync(user, RoleNames.Passive.ToString());
                         await _userManager.RemoveFromRoleAsync(user, RoleNames.Patient.ToString());
@@ -175,6 +176,50 @@ namespace MHRSLite_UI.Controllers
                 ViewBag.EmailConfirmedMessage = "Beklenmedik bir hata oldu! Tekrar deneyiniz";
                 return View();
             }
+        }
+
+        [HttpGet]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    ModelState.AddModelError("", "Veri girişleri düzgün olmaldır!");
+                    return View(model);
+                }
+                //buradaki true yanlış girdiğinde hesabı kilitleyeyim mi? bunun ayarı böyle yapılır
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalıdır!");
+                    return View(model);
+                }
+            }
+
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Beklenmedik bir hata oluştu!");
+                return View(model);
+            }
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
