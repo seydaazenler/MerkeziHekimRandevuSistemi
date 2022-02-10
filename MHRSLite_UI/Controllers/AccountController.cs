@@ -221,5 +221,96 @@ namespace MHRSLite_UI.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public IActionResult ResetPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(string email)
+        {
+            try
+            {
+                var user =await _userManager.FindByEmailAsync(email);
+                if (user==null)
+                {
+                    ViewBag.ResetPasswordMessage = "Email adresine ait sistemde kayıtlı kullanıcı yok!";
+                }
+                else
+                {
+                    var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                    var callBackUrl = Url.Action("ConfirmResetPassword", "Account", 
+                        new {userId =user.Id,code=code },protocol:Request.Scheme);
+
+                    var emailMessage = new EmailMessage()
+                    {
+                        Subject = "Merkezi Hekim Randevu Sistemi(MHRS) - Şifremi Unuttum",
+                        Body = $"Merhaba {user.Name} {user.Surname} Yeni parola belirlemek için " +
+                        $"<a href='{HtmlEncoder.Default.Encode(callBackUrl)}'>buraya</a> tıklayınız."
+                    };
+                    await _emailSender.SendAsync(emailMessage);
+                    ViewBag.ResetPasswordMessage = "Posta kutunuza şifre güncelleme maili gönderilmiştir.";
+                }
+                return View();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.ResetPasswordMessage = "Beklenmedik bir hata oluştu!";
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult ConfirmResetPassword(string userId,string code)
+        {
+            if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(code))
+            {
+                return BadRequest("deneme");
+            }
+            ViewBag.UserId = userId;
+            ViewBag.Code = code;
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ConfirmResetPassword(ResetPasswordViewModel model)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(model);
+                }
+
+                var user = await _userManager.FindByIdAsync(model.UserId);
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Kullanıcı bulunamadı!");
+                    return View(model);
+                }
+
+                var code = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(model.Code));
+                var result = await _userManager.ResetPasswordAsync(user, code, model.NewPassword);
+
+                if (result.Succeeded)
+                {
+                    TempData["ConfirmResetPasswordMessage"] = "Şifreniz yenilendi";
+                    return RedirectToAction("Login", "Account");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "HATA: Şifre yenileme işlemi başarısız!");
+                    return View(model);
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Beklenmedik bir hata oluştu!");
+                return View(model);
+            }
+        }
     }
 }
