@@ -1,4 +1,5 @@
 ﻿using MHRSLite_EL.Enums;
+using MHRSLite_EL.Models;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
@@ -29,6 +30,12 @@ namespace MHRSLite_EL.IdentityModels
         //Gender alma(Cinsiyet)
         [Required(ErrorMessage ="Cinsiyet seçimi gereklidir!")]
         public Genders Gender { get; set; }
+
+        //Doctor tablosunda ilişkisi kuruldu
+        public virtual List<Doctor> Doctors { get; set; }
+        //Patient tablosunda ilişkisi kuruldu
+        public virtual List<Patient> Patients { get; set; }
+
 
     }
 }

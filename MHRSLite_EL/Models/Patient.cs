@@ -6,13 +6,12 @@ using System.Text;
 
 namespace MHRSLite_EL.Models
 {
-    [Table("Doctors")]
-    public class Doctor:PersonBase
+    [Table("Patients")]
+    public class Patient:PersonBase
     {
         public string UserId { get; set; }// Identity Model'in ID değeri burada Foreign Key olacaktır.
         [ForeignKey("UserId")]
         public virtual AppUser AppUser { get; set; }
-        public virtual List<HospitalClinics> HospitalClinics { get; set; }
-
+        public virtual List<Appointment> PatientAppointments { get; set; }
     }
 }

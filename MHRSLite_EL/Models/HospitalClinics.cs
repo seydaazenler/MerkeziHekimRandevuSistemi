@@ -22,5 +22,8 @@ namespace MHRSLite_EL.Models
         public string DoktorId { get; set; }
         [ForeignKey("DoktorId")]
         public virtual Doctor Doctor { get; set; }
-    }
+        public virtual List<AppointmentHours> AppointmentHours { get; set; }
+
+        public virtual List<Appointment> ClinicAppointments { get; set; }
+     }
 }
