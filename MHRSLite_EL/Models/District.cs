@@ -14,7 +14,7 @@ namespace MHRSLite_EL.Models
         public string DistrictName { get; set; }
 
         //City tablosuyla ilişki kuruldu.
-        public int CityId { get; set; }
+        public byte CityId { get; set; }
         [ForeignKey("CityId")]
         public virtual City City { get; set; }
 

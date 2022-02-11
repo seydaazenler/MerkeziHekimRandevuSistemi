@@ -6,6 +6,7 @@ using System.Text;
 
 namespace MHRSLite_EL.Models
 {
+    [Table("Appointments")]
     public class Appointment : Base<int>
     {
         public string PatientId { get; set; }
@@ -19,6 +20,6 @@ namespace MHRSLite_EL.Models
         [ForeignKey("PatientId")]
         public virtual Patient Patient { get; set; }
 
-        public virtual HospitalClinics HospitalClinic { get; set; }
+        public virtual HospitalClinic HospitalClinic { get; set; }
     }
 }

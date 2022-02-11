@@ -21,6 +21,6 @@ namespace MHRSLite_EL.Models
         public virtual District HospitalDistrict { get; set; }
 
         //HospitalClinics tablosunda ilişki kurulmuştur
-        public virtual List<HospitalClinics> HospitalClinics { get; set; }
+        public virtual List<HospitalClinic> HospitalClinics { get; set; }
     }
 }
