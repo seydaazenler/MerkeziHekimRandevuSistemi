@@ -9,7 +9,7 @@ namespace MHRSLite_BLL.Imlementations
 {
     public class PatientRepository :Repository<Patient>,IPatientRepository
     {
-        private readonly MyContext _myContext;
+        
         public PatientRepository(MyContext myContext)
             : base(myContext)
         {

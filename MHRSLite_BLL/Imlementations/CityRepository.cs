@@ -9,8 +9,7 @@ namespace MHRSLite_BLL.Imlementations
 {
     public class CityRepository : Repository<City>, ICityRepository
     {
-        private readonly MyContext _myContext;
-
+        
         public CityRepository(MyContext myContext)
             :base(myContext)
         {

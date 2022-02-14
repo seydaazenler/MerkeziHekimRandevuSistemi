@@ -9,7 +9,7 @@ namespace MHRSLite_BLL.Imlementations
 {
     public class HospitalRepository:Repository<Hospital>,IHospitalRepository
     {
-        private readonly MyContext _myContext;
+        
 
         public HospitalRepository(MyContext myContext)
             : base(myContext)
@@ -21,7 +21,7 @@ namespace MHRSLite_BLL.Imlementations
             //Örn: Bir önceki projede CategoryRepository'de dashboard için ihtiyaç duyuldu
             //  Örn: Sistem yöneticilerinin yada müdürlerinin istediği raporlar
             // Örn : İstanbuldaki toplam Dahiliye Klinik sayısı
-            _myContext = myContext;
+            
         }
     }
 }
