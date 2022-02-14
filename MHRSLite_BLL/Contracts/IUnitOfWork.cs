@@ -9,7 +9,11 @@ namespace MHRSLite_BLL.Contracts
         ICityRepository CityRepository { get; }
         IDistrictRepository DistrictRepository { get; }
         IDoctorRepository DoctorRepository { get; }
-
         IPatientRepository PatientRepository { get; }
+        IHospitalRepository HospitalRepository { get; }
+        IClinicRepository ClinicRepository { get; }
+        IHospitalClinicRepository HospitalClinicRepository { get; }
+        IAppointmentRepository AppointmentRepository { get; }
+        IAppointmentHourRepository AppointmentHourRepository { get; }
     }
 }
