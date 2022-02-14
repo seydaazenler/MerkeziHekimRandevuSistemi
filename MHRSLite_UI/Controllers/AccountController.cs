@@ -1,7 +1,9 @@
 ﻿using MHRSLite_BLL;
+using MHRSLite_BLL.Contracts;
 using MHRSLite_EL;
 using MHRSLite_EL.Enums;
 using MHRSLite_EL.IdentityModels;
+using MHRSLite_EL.Models;
 using MHRSLite_UI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -29,17 +31,21 @@ namespace MHRSLite_UI.Controllers
 
         private readonly IEmailSender _emailSender;
 
+        private readonly IUnitOfWork _unitOfWork;
+
         public AccountController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             RoleManager<AppRole> roleManager,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IUnitOfWork unitOfWork)
 
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _roleManager = roleManager;
             _emailSender = emailSender;
+            _unitOfWork = unitOfWork;
             CheckRoles();
         }
 
@@ -79,11 +85,11 @@ namespace MHRSLite_UI.Controllers
 
                 //sepeti onayla, gibi aynı işleri aynı anda yapmak gerektiğinde async kullanırız yavaşlama olmasın diye
                 //aynı userName ve Maile sahip kişi tekrar eklenmemeli
-                var checkUserForUserName = await _userManager.FindByNameAsync(model.UserName);
-
+                var checkUserForUserName = await _userManager.FindByNameAsync(model.TCNumber);
+                //USERNAME = TCNUMBER
                 if (checkUserForUserName != null)
                 {
-                    ModelState.AddModelError(nameof(model.UserName), "Bu kullanıcı sistemde zaten mevcut!");
+                    ModelState.AddModelError(nameof(model.TCNumber), "Bu kullanıcı sistemde zaten mevcut!");
                     return View(model);
                 }
                 var checkUserForEMail = await _userManager.FindByEmailAsync(model.Email);
@@ -98,7 +104,7 @@ namespace MHRSLite_UI.Controllers
                     Email = model.Email,
                     Name = model.Name,
                     Surname = model.Surname,
-                    UserName = model.UserName,
+                    UserName = model.TCNumber,
                     Gender = model.Gender
                     //TODO: Birth Date? / Phone Number?
                 };
@@ -107,6 +113,7 @@ namespace MHRSLite_UI.Controllers
                 {
                     //eğer giriş işlemleri doğru ise kullanıcı = hasta ataması yapılır
                     var roleResult = await _userManager.AddToRoleAsync(newUser, RoleNames.Patient.ToString());
+                    
                     //email gönderilmelidir
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(newUser);
                     code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -121,6 +128,18 @@ namespace MHRSLite_UI.Controllers
                         $"<a href='{HtmlEncoder.Default.Encode(callBackUrl)}'> buraya </a> tıklayınız"
                     };
                     await _emailSender.SendAsync(emailMessage);
+                    //patient tablosuna ekleme yapılmalıdır
+                    Patient newPatient = new Patient()
+                    {
+                        TCNumber = model.TCNumber,
+                        UserId = newUser.Id
+
+                    };
+                    if (_unitOfWork.PatientRepository.Add(newPatient) == false)
+                    {
+                        //sistem yöneticisine email gitsin
+                    }
+
                     return RedirectToAction("Login", "Account");
 
                 }

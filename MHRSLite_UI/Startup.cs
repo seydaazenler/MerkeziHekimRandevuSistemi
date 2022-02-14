@@ -34,7 +34,7 @@ namespace MHRSLite_UI
             services.AddDbContext<MyContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
-                services.AddControllersWithViews();
+                
             });
 
             //***************Comment*************************
@@ -45,7 +45,8 @@ namespace MHRSLite_UI
             services.AddScoped<IEmailSender, EmailSender>();
             //****************Comment************************
 
-            services.AddControllersWithViews();
+            //Çalýþýrken Razor sayfasýnda yapýlan deðiþikliklerin sayfaya yenileyerek yansýmasý için kullanýlýr
+            services.AddControllersWithViews(x => x.SuppressAsyncSuffixInActionNames = false).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddMvc();
             services.AddSession(options =>
