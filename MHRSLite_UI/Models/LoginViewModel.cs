@@ -8,10 +8,10 @@ namespace MHRSLite_UI.Models
 {
     public class LoginViewModel
     {
-        [Display(Name = "Kullanıcı Adı")]
-        [Required(ErrorMessage = "Kullanıcı adı boş geçilemez!")]
+        [Display(Name = "Tc Kimlik No")]
+        [Required(ErrorMessage = "*Tc Kimlik No alanı boş geçilemez!")]
         public string UserName { get; set; }
-        [Required(ErrorMessage = "Şifre alanı boş geçilemez!")]
+        [Required(ErrorMessage = "*Şifre alanı boş geçilemez!")]
         [StringLength(100, MinimumLength = 6, ErrorMessage = "Şifreniz minimum 6 karakterli olmalıdır!")]
         [Display(Name = "Şifre")]
         [DataType(DataType.Password)]

@@ -24,7 +24,7 @@ namespace MHRSLite_BLL.Imlementations
             {
                 bool result = false;
                 _myContext.Set<T>().Add(entity);
-                result = true;
+                result = _myContext.SaveChanges() > 0 ? true : false;
                 return result;
             }
             catch (Exception ex)
