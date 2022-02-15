@@ -227,6 +227,20 @@ namespace MHRSLite_UI.Controllers
                     ModelState.AddModelError("", "Veri girişleri düzgün olmaldır!");
                     return View(model);
                 }
+                //userı bulup emailConfirmed kontrol edilsin
+                var user = await _userManager.FindByNameAsync(model.UserName);
+                if (user != null)
+                {
+                    //if (user.EmailConfirmed == false)
+                    if (!user.EmailConfirmed)
+                    {
+                        ModelState.AddModelError("", "Sistemi kullanabilmeniz için üyeliğinizi aktifleştirmeniz gerekmektedir." +
+                            "Emailinize gönderilen aktivasyon linkine tıklayarak aktifleştirme işlemini yapabilirsiniz!");
+                        return View(model);
+                    }
+                }
+
+
                 //buradaki true yanlış girdiğinde hesabı kilitleyeyim mi? bunun ayarı böyle yapılır
                 var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, true);
                 if (result.Succeeded)
@@ -238,6 +252,7 @@ namespace MHRSLite_UI.Controllers
                     ModelState.AddModelError("", "Kullanıcı adı veya şifre hatalıdır!");
                     return View(model);
                 }
+
             }
 
             catch (Exception ex)
@@ -280,6 +295,7 @@ namespace MHRSLite_UI.Controllers
 
                     var emailMessage = new EmailMessage()
                     {
+                        Contacts = new string[] {user.Email},
                         Subject = "Merkezi Hekim Randevu Sistemi(MHRS) - Şifremi Unuttum",
                         Body = $"Merhaba {user.Name} {user.Surname} Yeni parola belirlemek için " +
                         $"<a href='{HtmlEncoder.Default.Encode(callBackUrl)}'>buraya</a> tıklayınız."
@@ -301,7 +317,9 @@ namespace MHRSLite_UI.Controllers
         {
             if (string.IsNullOrEmpty(userId)||string.IsNullOrEmpty(code))
             {
-                return BadRequest("deneme");
+                //return BadRequest("deneme");
+                ModelState.AddModelError(string.Empty, "Kullanıcı bulunamadı!");
+                return View();
             }
             ViewBag.UserId = userId;
             ViewBag.Code = code;

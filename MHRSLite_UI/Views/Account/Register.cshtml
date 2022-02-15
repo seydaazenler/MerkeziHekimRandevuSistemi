@@ -1,12 +1,12 @@
 ﻿@model RegisterViewModel
 @{
     ViewData["Title"] = "Register";
-    Layout = "~/Views/Shared/_LayoutMHRS.cshtml";
+    Layout = "~/Views/Shared/_LayoutAccountMHRS.cshtml";
 }
 <div class="row">
     <div class="col-md-6">
         <h1 style="font-weight:bold">Üye Ol</h1>
-        <h3 style="color:darkgrey">*Tüm alanların doldurulması zorunludur.</h3>
+        <h4 style="color:darkgrey">*Tüm alanların doldurulması zorunludur.</h4>
         <form asp-controller="Account" asp-action="Register" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger">
             </div>
@@ -14,7 +14,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="TCNumber" class="control-label"></label>
+                <label style="font-weight:bold" asp-for="TCNumber" class="control-label"></label>
                 <input asp-for="TCNumber" class="form-control" type="text" maxlength="11" />
                 <span class="text-danger" asp-validation-for="TCNumber"></span>
             </div>
@@ -22,7 +22,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="Name" class="control-label"></label>
+                <label style="font-weight:bold" asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" type="text" />
                 <span class="text-danger" asp-validation-for="Name"></span>
             </div>
@@ -30,7 +30,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="Surname" class="control-label"></label>
+                <label style="font-weight:bold" asp-for="Surname" class="control-label"></label>
                 <input asp-for="Surname" class="form-control" type="text" />
                 <span class="text-danger" asp-validation-for="Surname"></span>
             </div>
@@ -38,7 +38,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="Email" class="control-label"></label>
+                <label style="font-weight:bold" asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" type="text" />
                 <span class="text-danger" asp-validation-for="Email"></span>
             </div>
@@ -46,7 +46,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="BirthDate" class="control-label"></label>
+                <label style="font-weight:bold" asp-for="BirthDate" class="control-label"></label>
                 <input asp-for="BirthDate" class="form-control" type="date" />
                 <span class="text-danger" asp-validation-for="BirthDate"></span>
             </div>
@@ -54,7 +54,7 @@
                 <span class="text-danger" style="font-weight:bold;margin-right:3px">
                     *
                 </span>
-                <label for="Gender">Cinsiyet</label>
+                <label  style="font-weight:bold" for="Gender">Cinsiyet</label>
                 <select name="Gender" class="form-control">
                     <option value="0" selected>Belirtilmemiş</option>
                     <option value="1">Bay</option>
@@ -65,7 +65,7 @@
                 <span class="text-danger" style="font-weight:bold" margin-right:3px">
                     *
                 </span>
-                <label asp-for="Password" class="control-label"></label>
+                <label  style="font-weight:bold" asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" type="password" />
                 <span class="text-danger" asp-validation-for="Password"></span>
             </div>

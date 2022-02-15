@@ -40,6 +40,7 @@ namespace MHRSLite_BLL.Imlementations
         public void Dispose()
         {
             _myContext.Dispose();
-        }
+        
+      }
     }
 }
