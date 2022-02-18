@@ -439,3 +439,5 @@ C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcore
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Account\ConfirmResetPassword.cshtml.g.cs
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Partials\_FooterPartial.cshtml.g.cs
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutAccountMHRS.cshtml.g.cs
+C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Patient\Index.cshtml.g.cs
+C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Patient\Appointment.cshtml.g.cs
