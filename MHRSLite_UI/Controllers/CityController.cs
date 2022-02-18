@@ -1,7 +1,6 @@
 ﻿using MHRSLite_BLL;
 using MHRSLite_BLL.Contracts;
 using MHRSLite_EL.IdentityModels;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -12,9 +11,10 @@ using System.Threading.Tasks;
 
 namespace MHRSLite_UI.Controllers
 {
-    public class PatientController : Controller
+    public class CityController : Controller
     {
         //Global Alan
+        
         private readonly UserManager<AppUser> _userManager;
 
         private readonly SignInManager<AppUser> _signInManager;
@@ -27,7 +27,7 @@ namespace MHRSLite_UI.Controllers
 
         private readonly IConfiguration _configuration;
 
-        public PatientController(
+        public CityController(
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             RoleManager<AppRole> roleManager,
@@ -44,34 +44,17 @@ namespace MHRSLite_UI.Controllers
             _configuration = configuration;
         }
 
-        [Authorize]
-        public IActionResult Index()
-        {
-            //geçmiş randevular olacak
-            try
-            {
-                return View();
-            }
-            catch (Exception ex)
-            {
-                return View();
-            }
-        }
-
-        [Authorize]
-        public IActionResult Appointment()
+        public JsonResult GetCityDistricts(int id)
         {
             try
             {
-                //illerin sıralama işlemini yaptık
-                ViewBag.Cities = _unitOfWork.CityRepository.GetAll(orderBy:x=> x.OrderBy(a=> a.CityName));
-                ViewBag.Clinics = _unitOfWork.ClinicRepository.GetAll(orderBy: x => x.OrderBy(a => a.ClinicName));
-                return View();
+                var data = _unitOfWork.DistrictRepository.GetAll(x => x.CityId == id, orderBy: x => x.OrderBy(y => y.DistrictName));
+                return Json(new { isSuccess = true, data });
             }
             catch (Exception ex)
             {
 
-                return View();
+                return Json(new { isSuccess = false });
             }
         }
     }
