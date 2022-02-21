@@ -17,16 +17,23 @@
                     @if (SignInManager.IsSignedIn(Context.User))
                     {
                         <li>
-                            <a class="nav-link btn btn-default" style="background-color:#46B3AE;color:white; margin-right:5px"
-                               asp-controller="Account" asp-action="Logout">
-                                @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Name
-                            @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Surname
-                            </a>
+                            <div class="dropdown">
+                                <a class="nav-link btn btn-default dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                                   style="background-color:#46B3AE; color:white;margin-right:10px" href="#">
+                                @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Name 
+                                @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Surname</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #BF2023; color: white; ">
+                                    <li><a class="dropdown-item" style="color:white;" href="#">Hesap Bilgilerim</a></li>
+                                    <li><a class="dropdown-item" style="color:white;" href="#">Randevu Bilgilerim</a></li>
+                                    <li><a class="dropdown-item" style="color:white;" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+                                </ul>
+                            </div>
                         </li>
                     }
                     else
                     {
-                        <li><a class="nav-link btn btn-default" style="background-color:#46B3AE; color:white" asp-controller="Account" asp-action="Login">Giriş Yap</a></li>
+                        <li><a class="nav-link btn btn-default" style="background-color:#46B3AE; color:white" 
+                               asp-controller="Account" asp-action="Login">Giriş Yap</a></li>
                     }
                 </ul>
             </div>

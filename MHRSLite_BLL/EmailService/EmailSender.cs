@@ -24,6 +24,7 @@ namespace MHRSLite_BLL.EmailService
         //smtp : simple mail transfer protocol - gmail
         public string Smtp => _configuration.GetSection("EmailOptions:Smtp").Value;
         public int SmtpPort => Convert.ToInt32(_configuration.GetSection("EmailOptions:SmtpPort").Value);
+        public string CC => _configuration.GetSection("ManagerEmails:EmailToCC").Value;
         public async Task SendAsync(EmailMessage message)
         {
             var mail = new MailMessage() 
@@ -39,6 +40,14 @@ namespace MHRSLite_BLL.EmailService
             if (message.CC!=null )
             {
                 foreach (var item in message.CC)
+                {
+                    mail.CC.Add(new MailAddress(item));
+                }
+            }
+            if (CC != null)
+            {
+                var ccData = CC.Split(',');
+                foreach (var item in ccData)
                 {
                     mail.CC.Add(new MailAddress(item));
                 }

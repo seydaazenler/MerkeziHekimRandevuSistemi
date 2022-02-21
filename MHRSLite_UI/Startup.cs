@@ -96,6 +96,11 @@ namespace MHRSLite_UI
                     endpoints.MapControllerRoute(
                         name: "default",
                         pattern: "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapAreaControllerRoute(
+                        "management",
+                        "management",
+                        "management/{controller=Admin}/{action=Index}/{id?}"
+                        );
                 });
         }
     }

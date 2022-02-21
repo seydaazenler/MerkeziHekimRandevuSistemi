@@ -19,7 +19,10 @@ namespace MHRSLite_EL.Enums
     {
         Passive,
         Admin,
-        Patient //hasta
+        Patient, //hasta
+        PassiveDoctor,
+        ActiveDoctor
+
 
     }
 }
