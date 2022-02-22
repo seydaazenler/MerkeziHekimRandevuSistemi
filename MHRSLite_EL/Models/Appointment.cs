@@ -9,6 +9,7 @@ namespace MHRSLite_EL.Models
     [Table("Appointments")]
     public class Appointment : Base<int>
     {
+        [Required]
         public string PatientId { get; set; }
         public int HospitalClinicId { get; set; }
         [Required]
