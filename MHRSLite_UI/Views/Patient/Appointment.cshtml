@@ -64,29 +64,38 @@
 </div>
 @section Scripts{
     <script>
+        //CitySelect combodan il seçildiğinde bu fonk çalışacak
+        //change event
         $('#CitySelect').on('change', function () {
+            //ilçe combosunu temizler ve içerisine ilk değerini atar
             var $dropdown = $("#DistrictSelect");
             $dropdown.empty();
             $dropdown.append("<option selected value='0'>***İlçe Seçiniz***</option>");
-
+            //il değiştiği anda hastane combosu temizlensin ve ilk değeri(***Hastane Seçiniz***) atansın
             var $dropdown = $("#HospitalSelect");
             $dropdown.empty();
             $dropdown.append("<option selected value='0'>***Hastane Seçiniz***</option>");
 
+            //il değiştiğinde clinic resetlensin
+            $('#ClinicSelect')
+                .val(0)
+                .trigger('change');
 
+            //hangi ilin seçili olduğunu değişkene aldık
             var cityId = this.value;
+            //il combosundan seçilen değer 0dan büyükse gerçekten bir il seçildiyse aşağıdaki metota gitsin
+            //böylece İle ait ilçeleri getirmiş olur.
             if (cityId > 0) {
                 $.ajax({
                     type: "GET",
                     url: '/City/GetCityDistricts/' + cityId,
                     success: function (res) {
-                        console.log(res.data);
-                        //<option selected value="0">***İl Seçiniz***</option>
-
+                        
                         var $dropdown = $("#DistrictSelect");
                         $dropdown.empty();
                         $dropdown.append("<option selected value='0'>***İlçe Seçiniz***</option>");
-
+                        //bu bir jquery foreach döngüsüdür
+                        //gelen json sonucunun her birini ilçe combosuna ekler
                         $.each(res.data, function () {
                             $dropdown.append($("<option />").val(this.id).text(this.districtName));
                         });
@@ -97,11 +106,12 @@
                 });
             }
         });
-
-
+        //ilçe combodan ilçe seçildiğinde bu fonk çalışacak
+        //change event
         $('#DistrictSelect').on('change', function () {
+            //hangi ilçenin seçildiğini değişkene atadık belki işimize yararsa diye
             var districtid = this.value;
-            //alert(districtid);
+            //ilçe değiştiğinde hastane combosunun içini temizle ve ilk değerini ata
             var $dropdown = $("#HospitalSelect");
             $dropdown.empty();
             $dropdown.append("<option selected value='0'>***Hastane Seçiniz***</option>");
@@ -110,18 +120,23 @@
                 .trigger('change');
         });
 
+        //klinik seçildiğinde bu fonk çalışacak
         $('#ClinicSelect').on('change', function () {
+            //hangi kliniğin seçili olduğu değişkeni aldık
             var clinicid = this.value;
+            //hangi ilçenin seçili olduğunu değişkene aldık
             var districtid = $('#DistrictSelect').val();
+            //hastane combosu temizlenip ilk değeri atandı
             var $dropdown = $("#HospitalSelect");
             $dropdown.empty();
             $dropdown.append("<option selected value='0'>***Hastane Seçiniz***</option>");
-
+            //seçilen kliniğin value değeri 0dan büyükse o ilçedeki o kliniklere sahip hastaneleri getirecek
             if (clinicid > 0) {
                 $.ajax({
                     type: "GET",
                     url: '/Hospital/GetHospitalFromClinicId?id=' + clinicid + "&districtid=" + districtid,
                     success: function (res) {
+                        //json ile gelen hastaneler hastane combosuna eklendi. (Jqoery foreach döngüsü)
                         console.log(res.data);
                         $.each(res.data, function () {
                             $dropdown.append($("<option />").val(this.id).text(this.hospitalName));
@@ -134,28 +149,26 @@
             }
 
         });
-
+        //Hastane seçildiğinde bu fonk çalışır (change event)
         $('#HospitalSelect').on('change', function () {
             var id = this.value;
         });
-
+        //Temizle butonu temizlik yapacak
         $('#Temizle').on('click', function () {
+            //iller combosunda "il seçiniz" seçili hale gelsin
             $('#CitySelect')
                 .val(0)
                 .trigger('change');
-
-            $('#ClinicSelect')
-                .val(0)
-                .trigger('change');
         });
-
+        //randevuAra butonuna tıklandığında seçili hastane ve kliniğe ait müsait randevular ekrana gelecek
         $('#randevuAra').on('click', function () {
+            //seçili hospitalın Idsi
             var hid = $("#HospitalSelect").val();
             //    alert(hid);
-
+            //seçili kliniğin Idsi
             var cid = $("#ClinicSelect").val();
             //   alert(cid);
-
+            //yeni pencerede müsait randevular listelenecek
             window.open('/Patient/FindAppointment?hid=' + hid + '&cid=' + cid);
 
         });
