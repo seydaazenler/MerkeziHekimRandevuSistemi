@@ -1,6 +1,7 @@
 ﻿using MHRSLite_BLL;
 using MHRSLite_BLL.Contracts;
 using MHRSLite_EL.IdentityModels;
+using MHRSLite_EL.Models;
 using MHRSLite_UI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -125,6 +126,45 @@ namespace MHRSLite_UI.Controllers
             catch (Exception)
             {
                 throw;
+            }
+        }
+
+        [Authorize]
+        public IActionResult SaveAppointment(int hid, string date,string hour)
+        {
+            try
+            {
+                //randevu kayıt edilecek
+                //aynı saate ve tarihe başka randevusu var mı?
+                DateTime appointmentDate = Convert.ToDateTime(date);
+                if (_unitOfWork.AppointmentRepository.GetFirstOrDefault(x=> x.AppointmentDate ==  appointmentDate && x.AppointmentHour==hour)!=null)
+                {
+                    //aynı tarih ve saatte randevusu varsa
+                    TempData["SaveAppointmentsStatus"] = $"{date} - {hour} tarihinde bir kliniğe zaten randevu almışsınız." +
+                        $" Aynı tarih ve saate başka randevu alınamaz!";
+                    return RedirectToAction("Index", "Patient");
+                }
+
+                Appointment patientAppointment = new Appointment()
+                {
+                    CreatedDate=DateTime.Now,
+                    PatientId = HttpContext.User.Identity.Name,
+                    HospitalClinicId = hid,
+                    AppointmentDate=appointmentDate,
+                    AppointmentHour=hour
+                    
+                };
+
+                var result = _unitOfWork.AppointmentRepository.Add(patientAppointment);
+                TempData["SaveAppointmentStatus"] = result ? "Randevunuz başarıyla oluşturuldu" : "HATA: Beklenmedik bir hata oluştu!";
+
+                return RedirectToAction("Index", "Patient");
+            }
+            catch (Exception ex)
+            {
+                TempData["SaveAppointmentStatus"] = "HATA: " + ex.Message;
+                return RedirectToAction("Index", "Patient");
+                
             }
         }
     }

@@ -4,6 +4,12 @@
     Layout = "~/Views/Shared/_LayoutMHRS.cshtml";
 }
 
+@if (!string.IsNullOrEmpty(TempData["SaveAppointmentStatus"] as String))
+{
+<div class="alert alert-warning" role="alert">
+    @TempData["SaveAppointmentStatus"]
+</div>
+}
 <div class="row">
     <div class="col-md-4">
         <button asp-controller="Patient" asp-action="Appointment" class="btn btn-block btn-default" style="color: white; background-color: #bf2023; height: 100px; margin: auto 0 ">
