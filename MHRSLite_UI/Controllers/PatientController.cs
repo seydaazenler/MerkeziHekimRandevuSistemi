@@ -1,6 +1,7 @@
 ﻿using MHRSLite_BLL;
 using MHRSLite_BLL.Contracts;
 using MHRSLite_EL.IdentityModels;
+using MHRSLite_UI.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -72,6 +73,58 @@ namespace MHRSLite_UI.Controllers
             {
 
                 return View();
+            }
+        }
+
+        [Authorize]
+        public IActionResult FindAppointment(int cityid,int? distid, int cid, int? hid, int? dr)
+        {
+            try
+            {
+                //Dışarıdan gelen clinicId'nin olduğu HospitalClinic kayıtlarını al
+                var data = _unitOfWork.HospitalClinicRepository.GetAll(x => x.ClinicId == cid && x.HospitalId == hid.Value)
+                                                               .Select(a => a.AppointmentHours).ToList();
+
+                var list = new List<PatientAppointmentViewModel>();
+                foreach (var item in data)
+                {
+                    foreach (var subitem in item)
+                    {
+                        var hospitalClinicData = _unitOfWork.HospitalClinicRepository.GetFirstOrDefault(x => x.Id == subitem.HospitalClinicId);
+
+                        //o hastanede o klinikteki çalışma ssatleri çekildi
+                        var hours = subitem.Hours.Split(',');
+                        var appointment = _unitOfWork.AppointmentRepository.GetAll(x=> x.HospitalClinicId == subitem.HospitalClinicId
+                                                                                   && (x.AppointmentDate>DateTime.Now.AddDays(-1)
+                                                                                   && x.AppointmentDate < DateTime.Now.AddDays(2)
+                                                                                   )
+                                                                                   ).ToList();
+                        foreach (var houritem in hours)
+                        {
+                            if (appointment.Count(x=> x.AppointmentDate==(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString()))
+                            && x.AppointmentHour == houritem) ==0)
+                            {
+                                list.Add(new PatientAppointmentViewModel()
+                                {
+                                    AppointmentDate = Convert.ToDateTime(DateTime.Now.AddDays(1)),
+                                    HospitalClinicId = subitem.HospitalClinicId,
+                                    DoctorId = hospitalClinicData.DoktorId,
+                                    AvailableHour = houritem,
+                                    Doctor = _unitOfWork.DoctorRepository.GetFirstOrDefault(x => x.TCNumber == hospitalClinicData.DoktorId,
+                                    includeProperties: "AppUser")
+                                });
+                            }
+                        }
+                    }
+                }
+
+                list = list.Distinct().OrderBy(x=> x.AppointmentDate).ToList();
+                return View(list);
+                                                              
+            }
+            catch (Exception)
+            {
+                throw;
             }
         }
     }
