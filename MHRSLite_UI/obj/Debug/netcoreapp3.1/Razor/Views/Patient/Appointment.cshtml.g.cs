@@ -40,8 +40,15 @@ using MHRSLite_EL.IdentityModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\Views\_ViewImports.cshtml"
+using MHRSLite_EL.Models;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e82611cc3602d2a7e79fa573160a76c598b8bc04", @"/Views/Patient/Appointment.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1e6353e1e6dc0fe8bff72cf424266c033fecdd13", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7af129a036f61b3a4a8b161daaf817a8bb5a0a77", @"/Views/_ViewImports.cshtml")]
     public class Views_Patient_Appointment : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "0", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -86,14 +93,14 @@ using MHRSLite_EL.IdentityModels;
 #nullable disable
             WriteLiteral("<div class=\"row\">\r\n");
             WriteLiteral("</div>\r\n<div class=\"row\" style=\"background-color:whitesmoke; border-radius:4px; padding:10px\">\r\n    <div class=\"col-md-12\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc045525", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc045720", async() => {
                 WriteLiteral(@"
             <div class=""form-group"">
                 <span class=""text-danger"" style=""font-weight:bold;margin-right:3px""> * </span>
                 <label for=""City"" style=""font-weight:bold"">İL</label>
                 <select id=""CitySelect"" name=""City"" class=""form-control"">
                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc046098", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc046293", async() => {
                     WriteLiteral("**İl Seçiniz**");
                 }
                 );
@@ -121,7 +128,7 @@ using MHRSLite_EL.IdentityModels;
 #line hidden
 #nullable disable
                 WriteLiteral("                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc047969", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc048164", async() => {
 #nullable restore
 #line 19 "C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\Views\Patient\Appointment.cshtml"
                                             Write(item.CityName);
@@ -168,7 +175,7 @@ using MHRSLite_EL.IdentityModels;
                 <label for=""District"" style=""font-weight:bold"">İLÇE</label>
                 <select id=""DistrictSelect"" name=""District"" class=""form-control"">
                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0410482", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0410677", async() => {
                     WriteLiteral("***İlçe Seçiniz***");
                 }
                 );
@@ -194,7 +201,7 @@ using MHRSLite_EL.IdentityModels;
                 <label for=""Clinic"" style=""font-weight:bold"">KLİNİK</label>
                 <select id=""ClinicSelect"" name=""Clinic"" class=""form-control"">
                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0412413", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0412608", async() => {
                     WriteLiteral("***Klinik Seçiniz***");
                 }
                 );
@@ -222,7 +229,7 @@ using MHRSLite_EL.IdentityModels;
 #line hidden
 #nullable disable
                 WriteLiteral("                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0414292", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0414487", async() => {
 #nullable restore
 #line 39 "C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\Views\Patient\Appointment.cshtml"
                                             Write(item.ClinicName);
@@ -268,7 +275,7 @@ using MHRSLite_EL.IdentityModels;
                 <label for=""Hospital"" style=""font-weight:bold"">HASTANE</label>
                 <select id=""HospitalSelect"" name=""Hospital"" class=""form-control"">
                     ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0416809", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e82611cc3602d2a7e79fa573160a76c598b8bc0417004", async() => {
                     WriteLiteral("***Hastane Seçiniz***");
                 }
                 );

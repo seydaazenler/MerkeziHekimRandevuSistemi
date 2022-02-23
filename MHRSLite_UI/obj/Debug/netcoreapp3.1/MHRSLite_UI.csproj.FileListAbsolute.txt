@@ -444,3 +444,4 @@ C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcore
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Areas\Management\Views\Doctor\Register.cshtml.g.cs
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Areas\Management\Views\_ViewImports.cshtml.g.cs
 C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Patient\FindAppointment.cshtml.g.cs
+C:\Users\103SABAH_ŞEYDA\source\repos\MHRSLiteCore\MHRSLite_UI\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\PatientAppointments\Default.cshtml.g.cs
