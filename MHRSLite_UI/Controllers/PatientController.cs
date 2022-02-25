@@ -66,7 +66,7 @@ namespace MHRSLite_UI.Controllers
             try
             {
                 //illerin sıralama işlemini yaptık
-                ViewBag.Cities = _unitOfWork.CityRepository.GetAll(orderBy:x=> x.OrderBy(a=> a.CityName));
+                ViewBag.Cities = _unitOfWork.CityRepository.GetAll(orderBy: x => x.OrderBy(a => a.CityName));
                 ViewBag.Clinics = _unitOfWork.ClinicRepository.GetAll(orderBy: x => x.OrderBy(a => a.ClinicName));
                 return View();
             }
@@ -224,7 +224,7 @@ namespace MHRSLite_UI.Controllers
 
 
         [Authorize]
-        public IActionResult FindAppointmentPrevious(int cityid,int? distid, int cid, int? hid, int? dr)
+        public IActionResult FindAppointmentPrevious(int cityid, int? distid, int cid, int? hid, int? dr)
         {
             try
             {
@@ -241,15 +241,15 @@ namespace MHRSLite_UI.Controllers
 
                         //o hastanede o klinikteki çalışma ssatleri çekildi
                         var hours = subitem.Hours.Split(',');
-                        var appointment = _unitOfWork.AppointmentRepository.GetAll(x=> x.HospitalClinicId == subitem.HospitalClinicId
-                                                                                   && (x.AppointmentDate>DateTime.Now.AddDays(-1)
+                        var appointment = _unitOfWork.AppointmentRepository.GetAll(x => x.HospitalClinicId == subitem.HospitalClinicId
+                                                                                   && (x.AppointmentDate > DateTime.Now.AddDays(-1)
                                                                                    && x.AppointmentDate < DateTime.Now.AddDays(2)
                                                                                    )
                                                                                    ).ToList();
                         foreach (var houritem in hours)
                         {
-                            if (appointment.Count(x=> x.AppointmentDate==(Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString()))
-                            && x.AppointmentHour == houritem) ==0)
+                            if (appointment.Count(x => x.AppointmentDate == (Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString()))
+                            && x.AppointmentHour == houritem) == 0)
                             {
                                 list.Add(new PatientAppointmentViewModel()
                                 {
@@ -265,9 +265,9 @@ namespace MHRSLite_UI.Controllers
                     }
                 }
 
-                list = list.Distinct().OrderBy(x=> x.AppointmentDate).ToList();
+                list = list.Distinct().OrderBy(x => x.AppointmentDate).ToList();
                 return View(list);
-                                                              
+
             }
             catch (Exception)
             {
@@ -276,41 +276,46 @@ namespace MHRSLite_UI.Controllers
         }
 
         [Authorize]
-        public IActionResult SaveAppointment(int hcid, string date,string hour)
+        public JsonResult SaveAppointment(int hcid, string date, string hour)
         {
+            var message = string.Empty;
             try
             {
+
                 //randevu kayıt edilecek
                 //aynı saate ve tarihe başka randevusu var mı?
                 DateTime appointmentDate = Convert.ToDateTime(date);
-                if (_unitOfWork.AppointmentRepository.GetFirstOrDefault(x=> x.AppointmentDate ==  appointmentDate && x.AppointmentHour==hour)!=null)
+                if (_unitOfWork.AppointmentRepository
+                    .GetFirstOrDefault(x => x.AppointmentDate == appointmentDate && x.AppointmentHour == hour) != null)
                 {
                     //aynı tarih ve saatte randevusu varsa
-                    TempData["SaveAppointmentsStatus"] = $"{date} - {hour} tarihinde bir kliniğe zaten randevu almışsınız." +
+                    message = $"{date} - {hour} tarihinde bir kliniğe zaten randevu almışsınız." +
                         $" Aynı tarih ve saate başka randevu alınamaz!";
-                    return RedirectToAction("Index", "Patient");
+                    return Json(new { isSuccess = false, message });
                 }
 
                 Appointment patientAppointment = new Appointment()
                 {
-                    CreatedDate=DateTime.Now,
+                    CreatedDate = DateTime.Now,
                     PatientId = HttpContext.User.Identity.Name,
                     HospitalClinicId = hcid,
-                    AppointmentDate=appointmentDate,
-                    AppointmentHour=hour
-                    
+                    AppointmentDate = appointmentDate,
+                    AppointmentHour = hour
+
                 };
 
-                var result = _unitOfWork.AppointmentRepository.Add(patientAppointment);
-                TempData["SaveAppointmentStatus"] = result ? "Randevunuz başarıyla oluşturuldu" : "HATA: Beklenmedik bir hata oluştu!";
+                bool result = _unitOfWork.AppointmentRepository.Add(patientAppointment);
+                message = result ? "Randevunuz başarıyla oluşturuldu" : "HATA: Beklenmedik bir hata oluştu!";
 
-                return RedirectToAction("Index", "Patient");
+                return result ? Json(new { isSuccess = true, message })
+                              : Json(new { isSuccess = false, message });
+
             }
             catch (Exception ex)
             {
-                TempData["SaveAppointmentStatus"] = "HATA: " + ex.Message;
-                return RedirectToAction("Index", "Patient");
-                
+                message = "HATA: " + ex.Message;
+                return Json(new { isSuccess = false, message });
+
             }
         }
     }

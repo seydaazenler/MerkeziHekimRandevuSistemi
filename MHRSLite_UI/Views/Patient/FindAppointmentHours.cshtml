@@ -7,11 +7,7 @@
     <div class="container-fluid">
         <div class="row" style=" border-radius: 12px; padding: 30px; min-height: calc(100vh - 300px);">
             <div class="row col-md-12" style="font-size:20px">
-                <span>
-                    <a asp-controller="Patient" asp-action="FindAppointment"
-                       asp-route-cid="@TempData["ClinicId"]"
-                       asp-route-hid="@TempData["HospitalId"]"><i class="fa fa-arrow-left" style="color:black"></i></a>&emsp;Geri Dön
-                </span>
+                <span><a asp-controller="Patient" asp-action="FindAppointment" asp-route-cid="@TempData["ClinicId"]" asp-route-hid="@TempData["HospitalId"]"><i class="fa fa-arrow-left" style="color:black"></i></a>&emsp;Randevu Al</span>
                 @* Randevu al ve geri butonu *@
             </div>
             <div class="row col-md-12" style="font-size:20px">
@@ -32,51 +28,37 @@
                 <div class="tab-content">
                     <div class="accordion" id="myAccordion">
                         @{
-                            int sayac = 0;
+                            byte sayac = 1;
                         }
-                        @for (int i = 0; i < Model.Count; i++)
+                        @foreach (var item in Model)
                         {
-                            if (Model[i].Hours.Count == 0)
+                            if (item.Hours.Count == 0)
                             {
                                 continue;
                             }
-
-                            var prevData = string.Empty;
-                            if (i > 0)
-                            {
-                                prevData = Model[i - 1].HourBase.Substring(0, 2);
-                            }
-
-
-
                             <div class="accordion-item">
-                                @if (string.IsNullOrEmpty(prevData)
-                                    || prevData != Model[i].HourBase.Substring(0, 2)
-                                 )
-                                {
-                                    { sayac++; }
-                                    <h2 class="accordion-header" id="heading@(sayac)">
-                                        <button style="height:50px" type="button" class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapse@(sayac)">@Model[i].HourBase</button>
-                                    </h2>
-                                }
 
+                                <h2 class="accordion-header" id="heading@(sayac)">
+                                    <button type="button" class="accordion-button collapsed" data-bs-toggle="collapse"
+                                            data-bs-target="#collapse@(sayac)" style="height:50px">
+                                        @item.HourBase
+                                    </button>
+                                </h2>
                                 <div id="collapse@(sayac)" class="accordion-collapse collapse" data-bs-parent="#myAccordion">
                                     <div class="card-body">
-                                        @foreach (var subitem in Model[i].Hours)
+                                        @foreach (var subitem in item.Hours)
                                         {
-                                            <a asp-controller="Patient"
-                                               asp-action="SaveAppointment"
-                                               asp-route-hcid="@Model[i].HospitalClinicId"
-                                               asp-route-date="@DateTime.Now.AddDays(1).ToShortDateString()"
-                                               asp-route-hour="@subitem"
-                                               class="btn btn-primary" style="width:100px;">
+                                            <button type="submit" onclick="SaveAppointment(@item.HospitalClinicId,
+                                               '@DateTime.Now.AddDays(1).ToShortDateString()', '@subitem')"
+                                               class="btn btn-primary" style="width:100px; color:white;">
                                                 @subitem
-                                            </a>
+                                            </button>
 
                                         }
                                     </div>
                                 </div>
                             </div>
+                            sayac++;
                         }
                     </div>
                 </div>
@@ -84,3 +66,37 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        function SaveAppointment(hcid, date, hour) {
+            Swal.fire({
+                title: 'Randevu talebinizi onaylıyor musunuz?',
+                showDenyButton: false,
+                showCancelButton: true,
+                confirmButtonText: 'Onayla',
+                cancelButtonText: 'İptal Et',
+            }).then((result) => {
+                /* Read more about isConfirmed, isDenied below */
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'GET',
+                        url: '/Patient/SaveAppointment?hcid=' + hcid + '&date=' + date + '&hour=' + hour,
+                        success: function (res) {
+                            Swal.fire({
+                                title: res.message,
+                                showDenyButton: false,
+                                showCancelButton: false,
+                            }).then((result) => {
+                                window.open("/Patient/Index", "_self")
+                            });
+                        },
+                        error: function (err) {
+                            console.log(err, '', 'danger')
+                        },
+                    });
+                }
+            })
+        }
+    </script>
+}
