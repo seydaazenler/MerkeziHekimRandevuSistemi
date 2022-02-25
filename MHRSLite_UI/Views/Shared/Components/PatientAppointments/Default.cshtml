@@ -13,17 +13,17 @@
     <div class="tab-content">
 
         <div class="tab-pane active" id="myAppointments">
-            <table class="table">
+            <table class="table" style="margin-top:15px">
                 <tbody>
                     @foreach (var item in Model.UpcomingAppointments)
                     {
                         <tr>
-                            <td>
+                            <td style="vertical-align:middle">
                                 <strong>
                                     <span style="background: #fafafa; border: 1px solid #d9d9d9; border-radius: 5px; background-color: #46b3ae;
-                                    color: #fff; padding: 5px;">@item.AppointmentDate @item.AppointmentHour</span>
+                                    color: #fff; padding: 5px;">@item.AppointmentDate.ToShortDateString() @item.AppointmentHour</span>
                                         </strong><br/>
-                                        <i style="color: #CB0000"> *Aktif Randevu</i>
+                                        <i style="color: #CB0000; font-size:12px"> *Aktif Randevu</i>
                                     </td>
                                     <td>
                                         Hastane<br />
@@ -36,18 +36,18 @@
             </table>
         </div>
         <div class="tab-pane fade" id="myPastAppointments">
-            <table class="table">
+            <table class="table" style="margin-top:15px">
                 <tbody>
                     @foreach (var item in Model.PastAppointments)
                     {
                         <tr>
-                            <td>
+                            <td style="vertical-align:middle">
                                 <strong>
                                     <span style="background: #fafafa; border: 1px solid #d9d9d9; 
                                     border-radius: 5px; background-color: #46b3ae; color: #fff; 
-                                    padding: 5px;">@item.AppointmentDate @item.AppointmentHour</span>
+                                    padding: 5px;">@item.AppointmentDate.ToShortDateString() @item.AppointmentHour</span>
                                         </strong><br />
-                                                 <i style="color: #CB0000"> *Geçmiş Randevu</i>
+                                                 <i style="color: #CB0000; font-size: 12px"> *Geçmiş Randevu</i>
                                     </td>
                                     <td>
                                         Hastane<br />

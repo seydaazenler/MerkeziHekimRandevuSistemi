@@ -78,25 +78,47 @@ namespace MHRSLite_UI.Controllers
         }
 
         [Authorize]
-        public IActionResult FindAppointment(int cityid, int? distid, int cid, int? hid, int? dr)
+        public IActionResult FindAppointment(int cityid, int? distid,
+             int cid, int? hid, int? dr)
         {
             try
             {
-                var data = _unitOfWork.HospitalClinicRepository.GetAll(x => x.ClinicId == cid && x.HospitalId == hid.Value)
-                                                               .Select(a => a.AppointmentHours).ToList();
-                //buraya geri dönülecek
+                TempData["ClinicId"] = cid;
+                TempData["HospitalId"] = hid.Value;
+
+                //Dışarıdan gelen hid ve clinicid'nin olduğu HospitalClinic kayıtlarını al
+                var data = _unitOfWork.HospitalClinicRepository
+                    .GetAll(x => x.ClinicId == cid
+                    && x.HospitalId == hid.Value)
+                    .Select(a => a.AppointmentHours)
+                    .ToList();
                 var list = new List<AvailableDoctorAppointmentViewModel>();
                 foreach (var item in data)
                 {
                     foreach (var subitem in item)
                     {
-                        var hospitalClinicData = _unitOfWork.HospitalClinicRepository.GetFirstOrDefault(x => x.Id == subitem.HospitalClinicId);
-
+                        var hospitalClinicData =
+                            _unitOfWork.HospitalClinicRepository
+                            .GetFirstOrDefault(x => x.Id == subitem.HospitalClinicId);
                         var hours = subitem.Hours.Split(',');
-                        var appointment = _unitOfWork.AppointmentRepository.GetAll(x => x.HospitalClinicId == subitem.HospitalClinicId && (x.AppointmentDate > DateTime.Now.AddDays(-1) && x.AppointmentDate < DateTime.Now.AddDays(2))).ToList();
+                        var appointment = _unitOfWork
+                            .AppointmentRepository
+                            .GetAll(
+                            x => x.HospitalClinicId == subitem.HospitalClinicId
+                            &&
+                            (x.AppointmentDate > DateTime.Now.AddDays(-1)
+                            &&
+                            x.AppointmentDate < DateTime.Now.AddDays(2)
+                            )
+                            ).ToList();
                         foreach (var houritem in hours)
                         {
-                            if (appointment.Count(x => x.AppointmentDate == (Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString())) && x.AppointmentHour == houritem) == 0)
+                            if (appointment.Count(
+                                x =>
+                                x.AppointmentDate == (
+                                Convert.ToDateTime(DateTime.Now.AddDays(1).ToShortDateString())) &&
+                                x.AppointmentHour == houritem
+                                ) == 0)
                             {
                                 list.Add(new AvailableDoctorAppointmentViewModel()
                                 {
@@ -104,9 +126,14 @@ namespace MHRSLite_UI.Controllers
                                     ClinicId = hospitalClinicData.ClinicId,
                                     HospitalId = hospitalClinicData.HospitalId,
                                     DoctorTCNumber = hospitalClinicData.DoktorId,
-                                    Doctor = _unitOfWork.DoctorRepository.GetFirstOrDefault(x => x.TCNumber == hospitalClinicData.DoktorId, includeProperties: "AppUser"),
-                                    Hospital = _unitOfWork.HospitalRepository.GetFirstOrDefault(x => x.Id == hospitalClinicData.HospitalId),
-                                    Clinic = _unitOfWork.ClinicRepository.GetFirstOrDefault(x => x.Id == hospitalClinicData.ClinicId),
+                                    Doctor = _unitOfWork.DoctorRepository
+                                    .GetFirstOrDefault(x => x.TCNumber ==
+                                    hospitalClinicData.DoktorId, includeProperties: "AppUser"),
+                                    Hospital = _unitOfWork.HospitalRepository
+                                    .GetFirstOrDefault(x => x.Id ==
+                                    hospitalClinicData.HospitalId),
+                                    Clinic = _unitOfWork.ClinicRepository
+                                    .GetFirstOrDefault(x => x.Id == hospitalClinicData.ClinicId),
                                     HospitalClinic = hospitalClinicData
                                 });
                                 break;
@@ -116,11 +143,9 @@ namespace MHRSLite_UI.Controllers
                 }
                 list = list.Distinct().OrderBy(x => x.Doctor.AppUser.Name).ToList();
                 return View(list);
-
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
@@ -130,15 +155,24 @@ namespace MHRSLite_UI.Controllers
         {
             try
             {
+
                 var list = new List<AvailableDoctorAppointmentHoursViewModel>();
 
-                var data = _unitOfWork.AppointmentHourRepository
-                     .GetFirstOrDefault(x => x.HospitalClinicId == hcid);
+                var data = _unitOfWork.
+                    AppointmentHourRepository.
+                    GetFirstOrDefault(x => x.HospitalClinicId == hcid);
+
                 var hospitalClinicData =
                          _unitOfWork.HospitalClinicRepository
                          .GetFirstOrDefault(x => x.Id == hcid);
+                Doctor dr = _unitOfWork.DoctorRepository
+                    .GetFirstOrDefault(x => x.TCNumber == hospitalClinicData.DoktorId
+                    , includeProperties: "AppUser");
+                ViewBag.Doctor = "Dr." + dr.AppUser.Name + " " + dr.AppUser.Surname;
+
 
                 var hours = data.Hours.Split(',');
+
                 var appointment = _unitOfWork
                     .AppointmentRepository
                     .GetAll(
@@ -149,19 +183,22 @@ namespace MHRSLite_UI.Controllers
                     x.AppointmentDate < DateTime.Now.AddDays(2)
                     )
                     ).ToList();
+
                 foreach (var houritem in hours)
                 {
                     string myHourBase = houritem.Substring(0, 2) + ":00";
                     var appointmentHourData =
-                        new AvailableDoctorAppointmentHoursViewModel()
-                        {
-                            AppointmentDate = DateTime.Now.AddDays(1),
-                            Doctor =
-                               _unitOfWork.DoctorRepository
-                               .GetFirstOrDefault(x => x.TCNumber == hospitalClinicData.DoktorId),
-                            HourBase = myHourBase
-                        };
-                    list.Add(appointmentHourData);
+                      new AvailableDoctorAppointmentHoursViewModel()
+                      {
+                          AppointmentDate = DateTime.Now.AddDays(1),
+                          Doctor = dr,
+                          HourBase = myHourBase,
+                          HospitalClinicId = hcid
+                      };
+                    if (list.Count(x => x.HourBase == myHourBase) == 0)
+                    {
+                        list.Add(appointmentHourData);
+                    }
                     if (appointment.Count(
                         x =>
                         x.AppointmentDate == (
@@ -171,23 +208,18 @@ namespace MHRSLite_UI.Controllers
                     {
                         if (list.Count(x => x.HourBase == myHourBase) > 0)
                         {
-                            appointmentHourData.Hours.Add(houritem);
+                            list.Find(x => x.HourBase == myHourBase
+                                ).Hours.Add(houritem);
                         }
                     }
-
                 }
-
-                list = list.Distinct().ToList();
                 return View(list);
-
-
             }
             catch (Exception)
             {
 
                 throw;
             }
-
         }
 
 
@@ -244,7 +276,7 @@ namespace MHRSLite_UI.Controllers
         }
 
         [Authorize]
-        public IActionResult SaveAppointment(int hid, string date,string hour)
+        public IActionResult SaveAppointment(int hcid, string date,string hour)
         {
             try
             {
@@ -263,7 +295,7 @@ namespace MHRSLite_UI.Controllers
                 {
                     CreatedDate=DateTime.Now,
                     PatientId = HttpContext.User.Identity.Name,
-                    HospitalClinicId = hid,
+                    HospitalClinicId = hcid,
                     AppointmentDate=appointmentDate,
                     AppointmentHour=hour
                     
