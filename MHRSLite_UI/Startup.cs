@@ -15,6 +15,8 @@ using MHRSLite_BLL;
 using MHRSLite_BLL.EmailService;
 using MHRSLite_EL.IdentityModels;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using MHRSLite_EL.Enums;
 
 namespace MHRSLite_UI
 {
@@ -44,7 +46,13 @@ namespace MHRSLite_UI
             //IEmailSender gördüðün zaman bana EmailSender nesnesi üret!
             services.AddScoped<IEmailSender, EmailSender>();
             //****************Comment************************
-
+            services.AddScoped<IClaimsTransformation, ClaimProvider.ClaimProvider>();
+            services.AddAuthorization(opts =>
+            {
+                opts.AddPolicy("GenderPolicy", policy =>
+                policy.RequireClaim("gender", Genders.Bayan.ToString())
+                );
+            });
             //Çalýþýrken Razor sayfasýnda yapýlan deðiþikliklerin sayfaya yenileyerek yansýmasý için kullanýlýr
             services.AddControllersWithViews(x => x.SuppressAsyncSuffixInActionNames = false).AddRazorRuntimeCompilation();
             services.AddRazorPages();

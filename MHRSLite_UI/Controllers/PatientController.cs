@@ -1,5 +1,6 @@
 ﻿using MHRSLite_BLL;
 using MHRSLite_BLL.Contracts;
+using MHRSLite_EL.Enums;
 using MHRSLite_EL.IdentityModels;
 using MHRSLite_EL.Models;
 using MHRSLite_UI.Models;
@@ -300,7 +301,8 @@ namespace MHRSLite_UI.Controllers
                     PatientId = HttpContext.User.Identity.Name,
                     HospitalClinicId = hcid,
                     AppointmentDate = appointmentDate,
-                    AppointmentHour = hour
+                    AppointmentHour = hour,
+                    AppointmentStatus = AppointmentStatus.Active
 
                 };
 
