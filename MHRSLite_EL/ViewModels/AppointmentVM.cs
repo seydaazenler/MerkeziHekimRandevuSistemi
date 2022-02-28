@@ -23,7 +23,7 @@ namespace MHRSLite_EL.ViewModels
         public DateTime AppointmentDate { get; set; }
 
         [Required]
-        public string AppointmentHour { get; set; } //10:00
+        public string AppointmentHour { get; set; } //10:00aa
 
         public AppointmentStatus AppointmentStatus { get; set; }
 
