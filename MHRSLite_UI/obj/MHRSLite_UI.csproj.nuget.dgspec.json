@@ -78,6 +78,10 @@
               "suppressParent": "All",
               "target": "Package",
               "version": "[5.0.14, )"
+            },
+            "Select.HtmlToPdf.NetCore": {
+              "target": "Package",
+              "version": "[21.2.0, )"
             }
           },
           "imports": [
