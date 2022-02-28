@@ -18,6 +18,7 @@ namespace MHRSLite_BLL.Imlementations
         public UnitOfWork(MyContext myContext)
         {
             _myContext = myContext;
+            
             //UnitOfWork tüm repositoryleri oluşturacak.
             CityRepository = new CityRepository(_myContext);
             DistrictRepository = new DistrictRepository(_myContext);
@@ -29,8 +30,6 @@ namespace MHRSLite_BLL.Imlementations
             AppointmentRepository = new AppointmentRepository(_myContext, _mapper, _userManager);
             AppointmentHourRepository = new AppointmentHourRepository(_myContext);
         }
-
-
 
         public ICityRepository CityRepository { get; private set; }
         public IDistrictRepository DistrictRepository { get; private set; }

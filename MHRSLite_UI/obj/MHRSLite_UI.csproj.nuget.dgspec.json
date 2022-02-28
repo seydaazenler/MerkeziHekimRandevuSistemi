@@ -346,6 +346,10 @@
               "target": "Package",
               "version": "[7.0.0, )"
             },
+            "ClosedXML": {
+              "target": "Package",
+              "version": "[0.95.4, )"
+            },
             "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
               "target": "Package",
               "version": "[3.0.0, )"
