@@ -1,6 +1,7 @@
 ﻿@inject SignInManager<AppUser> SignInManager
 <header class="top-header">
-    <nav class="navbar header-nav navbar-expand-lg">
+    <nav class="navbar header-nav navbar-expand-lg"
+         style="position:fixed; top:0px; width:100%">
         <div class="container">
             <a class="navbar-brand" href="Home/Index">
                 <img src="~/health-theme-assets/images/MHRS103,_yan.png" alt="image" style="width:200px">
@@ -16,25 +17,26 @@
 
                     @if (SignInManager.IsSignedIn(Context.User))
                     {
-                        <li>
-                            <div class="dropdown">
-                                <a class="nav-link btn btn-default dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
-                                   style="background-color:#46B3AE; color:white;margin-right:10px" href="#">
-                                @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Name 
-                                @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Surname</a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #BF2023; color: white; ">
-                                    <li><a class="dropdown-item" style="color:white;" href="#">Hesap Bilgilerim</a></li>
-                                    <li><a class="dropdown-item" style="color:white;" href="#">Randevu Bilgilerim</a></li>
-                                    <li><a class="dropdown-item" style="color:white;" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                    }
+        <li>
+            <div class="dropdown">
+                <a class="nav-link btn btn-default dropdown-toggle" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
+                   style="background-color:#46B3AE; color:white;margin-right:10px" href="#">
+                    @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Name
+                    @SignInManager.UserManager.FindByNameAsync(Context.User.Identity.Name).Result.Surname
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink" style="background-color: #BF2023; color: white; ">
+                    <li><a class="dropdown-item" style="color:white;" href="#">Hesap Bilgilerim</a></li>
+                    <li><a class="dropdown-item" style="color:white;" href="#">Randevu Bilgilerim</a></li>
+                    <li><a class="dropdown-item" style="color:white;" asp-controller="Account" asp-action="Logout">Çıkış Yap</a></li>
+                </ul>
+            </div>
+        </li> }
                     else
                     {
-                        <li><a class="nav-link btn btn-default" style="background-color:#46B3AE; color:white" 
-                               asp-controller="Account" asp-action="Login">Giriş Yap</a></li>
-                    }
+        <li>
+            <a class="nav-link btn btn-default" style="background-color:#46B3AE; color:white"
+               asp-controller="Account" asp-action="Login">Giriş Yap</a>
+        </li>}
                 </ul>
             </div>
         </div>
