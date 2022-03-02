@@ -1,15 +1,12 @@
 ﻿
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutMHRS.cshtml";
-}
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutMHRS.cshtml"; }
 
 @if (!string.IsNullOrEmpty(TempData["SaveAppointmentStatus"] as String))
 {
 <div class="alert alert-warning" role="alert">
     @TempData["SaveAppointmentStatus"]
-</div>
-}
+</div>}
 <div style="background-color:#ffffff; border-radius: 18px; margin:30px;">
     <div class="container-fluid">
         <div class="row" style=" min-height: calc(100vh - 300px);">
@@ -28,21 +25,73 @@
                         </div>
 
                     </a>
-                    <a asp-controller="Home"
-                       asp-action="Deneme" class="btn btn-primary" style="width:100px">
-                        Deneme Claims
-                    </a>
+                    <a asp-controller="Home" asp-action="Deneme" class="btn btn-primary" style="width:100px;">Deneme Claim</a>
                 </div>
             </div>
             <div class="col-md-8" style="padding-top:30px;">
                 @*Randevularım-Geçmiş Randevularım*@
                 @*ViewComponent ile alınacak*@
-                @await Component.InvokeAsync("PatientAppointments")
+                <div class="col-md-8" style="padding-top:30px;">
+                    @await Component.InvokeAsync("PatientAppointments",
+                             new
+                             {
+                                 pageNumberPast = ViewBag.PageNumberPast,
+                                 pageNumberFuture = ViewBag.PageNumberFuture
+                             })
+                </div>
+
+
+
             </div>
-
-
-
+        </div>
         </div>
     </div>
-</div>
 
+@section Scripts{
+    <script type="text/javascript">
+        const { error } = require("jquery");
+        //arrow function
+        function CancelAppointmentBtnClicked(id) {
+            Swal.fire({
+                title: 'Randevuyu iptal etmek istediğinize emin misiniz?',
+                showDenyButton: false,
+                showConfirmButton: true,
+                confirmButtonText: 'Onayla',
+                cancelButtonText: 'İptal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    //randevuyu ipral edecek action'a ulaşması gerekli.
+                    $.ajax({
+                        type: "GET",
+                        url: '/Patient/CancelAppointment/' + id,
+                        success: function (res) {
+                            Swal.fire({
+                                title: res.message,
+                                showDenyButton: false,
+                                showCancelButton: false
+                            }).then((result) => {
+                                window.open("/Patient/Index", "_self");
+                            });
+                        },
+                        error: function (err) {
+                            Swal.fire(err, '', 'danger');
+                        }
+                    });
+                }
+            });
+        }
+        function UpcomingAppointmentsExcelExportBtnClicked() {
+            $.ajax({
+                type: "POST",
+                url: '/Patient/UpcomingAppointmentsExcelExport',
+                success: function (res) {
+
+                    Swal.fire("Başarılı", '', '');
+                },
+                error: function (err) {
+                    Swal.fire(err, '', 'danger');
+                }
+            });
+        }
+    </script>
+}

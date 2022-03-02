@@ -188,6 +188,8 @@ namespace MHRSLite_UI.Controllers
                     (x.AppointmentDate > DateTime.Now.AddDays(-1)
                     &&
                     x.AppointmentDate < DateTime.Now.AddDays(2)
+                    &&
+                    x.AppointmentStatus != AppointmentStatus.Cancelled
                     )
                     ).ToList();
 
@@ -293,7 +295,10 @@ namespace MHRSLite_UI.Controllers
                 //aynı saate ve tarihe başka randevusu var mı?
                 DateTime appointmentDate = Convert.ToDateTime(date);
                 if (_unitOfWork.AppointmentRepository
-                    .GetFirstOrDefault(x => x.AppointmentDate == appointmentDate && x.AppointmentHour == hour) != null)
+                    .GetFirstOrDefault(x => x.AppointmentDate == appointmentDate 
+                    && x.AppointmentHour == hour 
+                    && x.AppointmentStatus != AppointmentStatus.Cancelled
+                    ) != null)
                 {
                     //aynı tarih ve saatte randevusu varsa
                     message = $"{date} - {hour} tarihinde bir kliniğe zaten randevu almışsınız." +
@@ -384,7 +389,7 @@ namespace MHRSLite_UI.Controllers
         {
             try
             {
-                DataTable dt = new DataTable();
+                DataTable dt = new DataTable("Grid");
                 var patientId = HttpContext.User.Identity.Name;
                 var data = _unitOfWork.AppointmentRepository.GetUpComingAppointments(patientId);
 
