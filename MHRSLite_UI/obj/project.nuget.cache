@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "UXOAqP7TSozbAY/GQb/81RBYgCh/YWms9eLBEVZvN2p3Oj6iMiVXrlgn1kENpqoBERM9IK9YRFlOCSHGuzRuaQ==",
+  "dgSpecHash": "nAw2dcCXVA3UjS7yigUZr6ObqKWHo0WFjOSthp/n04L30B2m0fes/+TyIQd92DZgRyqLKawoftKClB8a+cNBow==",
   "success": true,
   "projectFilePath": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\MHRSLite_UI.csproj",
   "expectedPackageFiles": [
@@ -70,6 +70,7 @@
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\newtonsoft.json\\12.0.1\\newtonsoft.json.12.0.1.nupkg.sha512",
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
+    "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\quartz\\3.3.3\\quartz.3.3.3.nupkg.sha512",
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.fedora.24-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
