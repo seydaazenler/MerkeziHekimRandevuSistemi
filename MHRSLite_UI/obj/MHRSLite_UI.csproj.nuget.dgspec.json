@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_UI\\MHRSLite_UI.csproj": {}
+    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\MHRSLite_UI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\MHRSLite_BLL.csproj": {
+    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
+        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
         "projectName": "MHRSLite_BLL",
-        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
+        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
         "packagesPath": "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\obj\\",
+        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -32,11 +32,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
-                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj"
+              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
+                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj"
               },
-              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj": {
-                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj"
+              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
+                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj"
               }
             }
           }
@@ -103,14 +103,14 @@
         }
       }
     },
-    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
+    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj",
+        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj",
         "projectName": "MHRSLite_DAL",
-        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\MHRSLite_DAL.csproj",
+        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj",
         "packagesPath": "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_DAL\\obj\\",
+        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -131,8 +131,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj": {
-                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj"
+              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
+                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj"
               }
             }
           }
@@ -199,14 +199,14 @@
         }
       }
     },
-    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj": {
+    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj",
+        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj",
         "projectName": "MHRSLite_EL",
-        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj",
+        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj",
         "packagesPath": "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\obj\\",
+        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -291,14 +291,14 @@
         }
       }
     },
-    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_UI\\MHRSLite_UI.csproj": {
+    "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\MHRSLite_UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_UI\\MHRSLite_UI.csproj",
+        "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\MHRSLite_UI.csproj",
         "projectName": "MHRSLite_UI",
-        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_UI\\MHRSLite_UI.csproj",
+        "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\MHRSLite_UI.csproj",
         "packagesPath": "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_UI\\obj\\",
+        "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_UI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
@@ -319,11 +319,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\MHRSLite_BLL.csproj": {
-                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_BLL\\MHRSLite_BLL.csproj"
+              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj": {
+                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj"
               },
-              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj": {
-                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MHRSLiteCore\\MHRSLite_EL\\MHRSLite_EL.csproj"
+              "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
+                "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj"
               }
             }
           }
@@ -377,6 +377,18 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.5, )"
+            },
+            "Quartz": {
+              "target": "Package",
+              "version": "[3.3.3, )"
+            },
+            "Quartz.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[3.3.3, )"
+            },
+            "Quartz.Extensions.Hosting": {
+              "target": "Package",
+              "version": "[3.3.3, )"
             }
           },
           "imports": [

@@ -17,6 +17,8 @@ using MHRSLite_EL.IdentityModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Authentication;
 using MHRSLite_EL.Enums;
+using MHRSLite_EL.Mappings;
+using AutoMapper;
 
 namespace MHRSLite_UI
 {
@@ -47,7 +49,8 @@ namespace MHRSLite_UI
             services.AddScoped<IEmailSender, EmailSender>();
             //****************Comment************************
             services.AddScoped<IClaimsTransformation, ClaimProvider.ClaimProvider>();
-            services.AddAuthorization(opts =>
+            services.AddAutoMapper(typeof(Maps));
+;            services.AddAuthorization(opts =>
             {
                 opts.AddPolicy("GenderPolicy", policy =>
                 policy.RequireClaim("gender", Genders.Bayan.ToString())
