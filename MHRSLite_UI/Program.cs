@@ -48,7 +48,7 @@ namespace MHRSLite_UI
                     q.UseMicrosoftDependencyInjectionScopedJobFactory();
 
                     // Register the job, loading the schedule from configuration
-                    //q.AddJobAndTrigger<AppointmentStatusJob>(hostContext.Configuration);
+                    q.AddJobAndTrigger<AppointmentStatusJob>(hostContext.Configuration);
                     q.AddJobAndTrigger<RomatologyClaimJob>(hostContext.Configuration);
                     //q.AddJobAndTrigger<DenemeJob>(hostContext.Configuration);
                 });

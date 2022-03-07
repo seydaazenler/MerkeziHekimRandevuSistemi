@@ -26,8 +26,65 @@ namespace MHRSLite_UI.CreateDefaultData
             CheckRoles(roleManager);
             CreateCities(environment, unitOfWork);
             CreateClinics(environment, unitOfWork);
+            //Bu yöntemle sadece Clinic,CheckRoles ve Cities import edilmesi uygundur.
+            //İlçeler hastaneler gibi çok data olan durumlarda SQL scripti ile dataları eklemek avantajlıdır
+            //SQL Query oluşurmaktazorlanacak kadar çok veri varsa datalar excele yapıştırılıp, Console App tarzı
+            //uygulamayla aşağıdaki kodları kullanarak dataları daha kolay ekleyebilirsiniz.
+            //Canlıya çıkıldığında ilçeler script ile eklenecek
+#if DEBUG
+            CreateDistricts(environment, unitOfWork);
+#endif
         }
 
+        private static void CreateDistricts(IWebHostEnvironment environment, IUnitOfWork unitOfWork)
+        {
+
+            try
+            {
+                var districtList = unitOfWork.DistrictRepository.GetAll().ToList();
+                //Provide a path for excel file
+                //Excel dosyasının bulunduğu yolu aldık
+                string path = Path.Combine(environment.WebRootPath, "Excels");
+                string fileName = Path.GetFileName("Districts.xlsx");
+                string filePath = Path.Combine(path, fileName);
+                using (var excelBook = new XLWorkbook(filePath))
+                {
+                    var rows = excelBook.Worksheet(1).RowsUsed();
+                    foreach (var item in rows)
+                    {
+                        if (item.RowNumber() > 1 && item.RowNumber() <= rows.Count())
+                        {
+
+                            var cell = item.Cell(1).Value; //ilçe adı
+                            var cityId = Convert.ToByte(item.Cell(2).Value); //il id si
+
+                            var city = unitOfWork.CityRepository.GetFirstOrDefault(x => x.Id == cityId);
+                            District district = new District()
+                            {
+                                DistrictName = cell.ToString(),
+                                CityId = cityId,
+                                CreatedDate = DateTime.Now
+                            };
+
+                            if (districtList
+                                .Count(x => x.DistrictName.ToLower() == cell.ToString().ToLower()
+                                && x.CityId==cityId) == 0)
+                            {
+                                unitOfWork.DistrictRepository.Add(district);
+                            }
+
+
+                        }
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
+        }
         private static void CreateClinics(IWebHostEnvironment environment, IUnitOfWork unitOfWork)
         {
             try
@@ -54,7 +111,7 @@ namespace MHRSLite_UI.CreateDefaultData
                             };
 
                             if (clinicList
-                                .Count(x=> x.ClinicName.ToLower() == cell.ToString().ToLower()) == 0)
+                                .Count(x => x.ClinicName.ToLower() == cell.ToString().ToLower()) == 0)
                             {
                                 unitOfWork.ClinicRepository.Add(clinic);
                             }
