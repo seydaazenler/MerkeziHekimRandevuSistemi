@@ -65,6 +65,15 @@ namespace MHRSLite_UI
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
             });
 
+            //Google api'den alýnan clientId ve ClientSecret burada projeye dahil edildi.
+            services.AddAuthentication()
+                .AddGoogle(options =>
+                {
+                    options.ClientId = Configuration["Authentication:Google:ClientId"];
+                    options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                }
+                );
+                
             //****************************************
             //Þifre kurallarý ve kontrolü! Canlýya çýkarsak bunlar true yada default olmalý
             services.AddIdentity<AppUser, AppRole>(
