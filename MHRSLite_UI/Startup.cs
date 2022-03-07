@@ -82,7 +82,7 @@ namespace MHRSLite_UI
 
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<AppUser> userManager, RoleManager<AppRole> roleManager, IUnitOfWork unitOfWork)
         {
             if (env.IsDevelopment())
             {
@@ -102,6 +102,8 @@ namespace MHRSLite_UI
 
             app.UseAuthorization(); //authorization attiribute kullanabilmek için
 
+            CreateDefaultData.CreateData.Create(userManager,roleManager,unitOfWork,Configuration,env);
+            
             app.UseEndpoints(endpoints =>
                 {
                     endpoints.MapControllerRoute(

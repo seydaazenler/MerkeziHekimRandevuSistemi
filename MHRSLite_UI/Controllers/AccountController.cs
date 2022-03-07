@@ -51,25 +51,11 @@ namespace MHRSLite_UI.Controllers
             _emailSender = emailSender;
             _unitOfWork = unitOfWork;
             _configuration = configuration;
-            CheckRoles();
+           
         }
 
         //Global.asax dosyası olmadığı için rolleri burada oluşturururz
-        private void CheckRoles()
-        {
-            var allRoles = Enum.GetNames(typeof(RoleNames));
-            foreach (var item in allRoles)
-            {
-                if (!_roleManager.RoleExistsAsync(item).Result)
-                {
-                    var result = _roleManager.CreateAsync(new AppRole()
-                    {
-                        Name = item,
-                        Description = item
-                    }).Result;
-                }
-            }
-        }
+        
 
         [HttpGet]
         public IActionResult Register()
