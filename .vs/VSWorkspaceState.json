@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\MHRSLite_UI",
+    "\\MHRSLite_UI\\Controllers",
+    "\\MHRSLite_UI\\CreateDefaultData"
   ],
-  "SelectedNode": "\\MHRSLiteCore.sln",
   "PreviewInSolutionExplorer": false
 }

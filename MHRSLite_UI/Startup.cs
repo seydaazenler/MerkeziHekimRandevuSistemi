@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Builder;
+ï»¿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -34,7 +34,7 @@ namespace MHRSLite_UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Aspnet Core'un Connection String baðlantýsýný yapabilmek için servislerine dbContext klenmesi gerekir
+            //Aspnet Core'un Connection String baÄŸlantÄ±sÄ±nÄ± yapabilmek iÃ§in servislerine dbContext klenmesi gerekir
             services.AddDbContext<MyContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("SqlConnection"));
@@ -42,10 +42,10 @@ namespace MHRSLite_UI
             });
 
             //***************Comment*************************
-            //Baðýmsýzlýk iþlemi
-            //IUniteOfWork görüldüðü zaman bana UnitOfWork nesnesi üret!
+            //BaÄŸÄ±msÄ±zlÄ±k iÅŸlemi
+            //IUniteOfWork gÃ¶rÃ¼ldÃ¼ÄŸÃ¼ zaman bana UnitOfWork nesnesi Ã¼ret!
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-            //IEmailSender gördüðün zaman bana EmailSender nesnesi üret!
+            //IEmailSender gÃ¶rdÃ¼ÄŸÃ¼n zaman bana EmailSender nesnesi Ã¼ret!
             services.AddScoped<IEmailSender, EmailSender>();
             //****************Comment************************
             services.AddScoped<IClaimsTransformation, ClaimProvider.ClaimProvider>();
@@ -56,7 +56,7 @@ namespace MHRSLite_UI
                 policy.RequireClaim("gender", Genders.Bayan.ToString())
                 );
             });
-            //Çalýþýrken Razor sayfasýnda yapýlan deðiþikliklerin sayfaya yenileyerek yansýmasý için kullanýlýr
+            //Ã‡alÄ±ÅŸÄ±rken Razor sayfasÄ±nda yapÄ±lan deÄŸiÅŸikliklerin sayfaya yenileyerek yansÄ±masÄ± iÃ§in kullanÄ±lÄ±r
             services.AddControllersWithViews(x => x.SuppressAsyncSuffixInActionNames = false).AddRazorRuntimeCompilation();
             services.AddRazorPages();
             services.AddMvc();
@@ -65,17 +65,16 @@ namespace MHRSLite_UI
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
             });
 
-            //Google api'den alýnan clientId ve ClientSecret burada projeye dahil edildi.
+            //Google api'den alÃ½nan clientId ve clientSecret burada projeye dahil edildi.
             services.AddAuthentication()
                 .AddGoogle(options =>
                 {
                     options.ClientId = Configuration["Authentication:Google:ClientId"];
                     options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                }
-                );
-                
+                });
+
             //****************************************
-            //Þifre kurallarý ve kontrolü! Canlýya çýkarsak bunlar true yada default olmalý
+            //Åžifre kurallarÄ± ve kontrolÃ¼! CanlÄ±ya Ã§Ä±karsak bunlar true yada default olmalÄ±
             services.AddIdentity<AppUser, AppRole>(
                 opts =>
                 {
@@ -103,13 +102,13 @@ namespace MHRSLite_UI
             }
             app.UseStaticFiles();
 
-            app.UseRouting(); //rooting mekanizmasý için
+            app.UseRouting(); //rooting mekanizmasÄ± iÃ§in
 
-            app.UseSession(); //session oturum mekanizmasý için
+            app.UseSession(); //session oturum mekanizmasÄ± iÃ§in
 
-            app.UseAuthentication(); //login logout kullanabilmek için
+            app.UseAuthentication(); //login logout kullanabilmek iÃ§in
 
-            app.UseAuthorization(); //authorization attiribute kullanabilmek için
+            app.UseAuthorization(); //authorization attiribute kullanabilmek iÃ§in
 
             CreateDefaultData.CreateData.Create(userManager,roleManager,unitOfWork,Configuration,env);
             
