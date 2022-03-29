@@ -3,43 +3,43 @@
     Layout = "~/Views/Shared/_LayoutMHRS.cshtml";
 }
 
-<!-- Start Banner -->
-<div class="ulockd-home-slider">
-    <div class="container">
-        <div class="row">
-            <div class="pogoSlider" id="js-main-slider">
-                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500">
-                    <img src="https://i.hizliresim.com/dxgyiey.jpg" />
-                    <div class="lbox-caption pogoSlider-slide-element">
-                        <div class="lbox-details">
-                            <h1>COVID-19 ÖNLEMLERİ</h1>
-                            <p>Maske - Mesafe - Hijyen </p>
-                            <a href="#" class="btn">Detaylı Bilgi</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500" style="background-image: url(https://i.hizliresim.com/m119zs3.jpg);">
-                    <div class="lbox-caption pogoSlider-slide-element">
-                        <div class="lbox-details">
-                            <h1>We are Expert in The Field of Health Lab</h1>
-                            <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum</p>
-                            <a href="#appointment" class="btn">Appointment</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="pogoSlider-slide" data-transition="fade" data-duration="1500" style="background-image: url(https://i.hizliresim.com/954ndxf.jpg);">
-                    <div class="lbox-caption pogoSlider-slide-element">
-                        <div class="lbox-details">
-                            <h1>Welcome to Health Lab</h1>
-                            <p>Fusce convallis ante id purus sagittis malesuada. Sed erat ipsum </p>
-                            <a href="#" class="btn">Contact Us</a>
-                        </div>
-                    </div>
+<!-- Carousel -->
+<div id="demo" class="carousel slide" data-bs-ride="carousel">
 
-                </div>
-            </div><!-- .pogoSlider -->
+    <!-- Indicators/dots -->
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+        <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- The slideshow/carousel -->
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/health-theme-assets/images/slider-01.jpg" class="d-block" style="width: 80%; margin-left: auto; margin-right: auto;" />
+            <div class="carousel-caption">
+               
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/health-theme-assets/images/slider-02.jpg" class="d-block" style="width: 80%; margin-left: auto; margin-right: auto; " />
+            <div class="carousel-caption">
+                
+            </div>
+        </div>
+        <div class="carousel-item">
+            <img src="~/health-theme-assets/images/slider-03.jpg" class="d-block" style="width: 80%; margin-left: auto; margin-right: auto;" />
+            <div class="carousel-caption">
+                
+            </div>
         </div>
     </div>
-</div>
-<!-- End Banner -->
 
+    <!-- Left and right controls/icons -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev" style="margin-left:100px;">
+        <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next" style="margin-right:100px;">
+        <span class="carousel-control-next-icon"></span>
+    </button>
+</div>

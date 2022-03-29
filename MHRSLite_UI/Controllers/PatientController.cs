@@ -299,6 +299,7 @@ namespace MHRSLite_UI.Controllers
                     .GetFirstOrDefault(x => x.AppointmentDate == appointmentDate
                     && x.AppointmentHour == hour
                     && x.AppointmentStatus != AppointmentStatus.Cancelled
+                    && x.PatientId==HttpContext.User.Identity.Name
                     ) != null)
                 {
                     //aynı tarih ve saatte randevusu varsa

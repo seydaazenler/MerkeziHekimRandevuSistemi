@@ -45,6 +45,7 @@ namespace MHRSLite_UI
             //Bağımsızlık işlemi
             //IUniteOfWork görüldüğü zaman bana UnitOfWork nesnesi üret!
             services.AddScoped<IUnitOfWork, UnitOfWork>();
+           
             //IEmailSender gördüğün zaman bana EmailSender nesnesi üret!
             services.AddScoped<IEmailSender, EmailSender>();
             //****************Comment************************
@@ -65,13 +66,13 @@ namespace MHRSLite_UI
                 options.IdleTimeout = TimeSpan.FromSeconds(60);
             });
 
-            //Google api'den alýnan clientId ve clientSecret burada projeye dahil edildi.
-            services.AddAuthentication()
-                .AddGoogle(options =>
-                {
-                    options.ClientId = Configuration["Authentication:Google:ClientId"];
-                    options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-                });
+            ////Google api'den alýnan clientId ve clientSecret burada projeye dahil edildi.
+            //services.AddAuthentication()
+            //    .AddGoogle(options =>
+            //    {
+            //        options.ClientId = Configuration["Authentication:Google:ClientId"];
+            //        options.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+            //    });
 
             //****************************************
             //Şifre kuralları ve kontrolü! Canlıya çıkarsak bunlar true yada default olmalı

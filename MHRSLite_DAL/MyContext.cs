@@ -15,10 +15,8 @@ namespace MHRSLite_DAL
             //myCon yerine bu yazılır
             :base(options)
         {
-            
         }
         public virtual DbSet<City> Cities { get; set; }
-
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }

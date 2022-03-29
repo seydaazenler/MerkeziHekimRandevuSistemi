@@ -17,8 +17,7 @@ namespace MHRSLite_UI.Components
 
 
         //Dependecy Injection
-        public PatientAppointmentsViewComponent(IUnitOfWork unitOfWork,
-            IAppointmentRepository appointmentRepo)
+        public PatientAppointmentsViewComponent(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
         }

@@ -5869,23 +5869,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\": {},
+    "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
+      "projectUniqueName": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
       "projectName": "MHRSLite_BLL",
-      "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
-      "packagesPath": "C:\\Users\\103SABAH_ŞEYDA\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\obj\\",
+      "projectPath": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\MHRSLite_BLL.csproj",
+      "packagesPath": "C:\\Users\\ŞeydaZenler\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_BLL\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\103SABAH_ŞEYDA\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\ŞeydaZenler\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -5900,11 +5900,11 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
-              "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj"
+            "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj": {
+              "projectPath": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_DAL\\MHRSLite_DAL.csproj"
             },
-            "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
-              "projectPath": "C:\\Users\\103SABAH_ŞEYDA\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj"
+            "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj": {
+              "projectPath": "C:\\Users\\ŞeydaZenler\\source\\repos\\MerkeziHekimRandevuSistemi\\MHRSLite_EL\\MHRSLite_EL.csproj"
             }
           }
         }
@@ -5967,7 +5967,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
       }
     }
   }

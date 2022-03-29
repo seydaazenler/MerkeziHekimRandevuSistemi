@@ -23,7 +23,7 @@ namespace MHRSLite_UI.CreateDefaultData
                                   IWebHostEnvironment environment)
         {
             //Eklenmesini istediğimiz verileri ekleyecek metotları çağıralım.
-            //CheckRoles(roleManager);
+            CheckRoles(roleManager);
             CreateCities(environment, unitOfWork);
             CreateClinics(environment, unitOfWork);
 

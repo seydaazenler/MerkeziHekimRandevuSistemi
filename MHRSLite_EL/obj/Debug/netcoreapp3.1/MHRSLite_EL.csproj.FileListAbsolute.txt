@@ -24,3 +24,16 @@ C:\Users\103SABAH_ŞEYDA\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj
 C:\Users\103SABAH_ŞEYDA\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.dll
 C:\Users\103SABAH_ŞEYDA\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.pdb
 C:\Users\103SABAH_ŞEYDA\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.genruntimeconfig.cache
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\bin\Debug\netcoreapp3.1\MHRSLite_EL.deps.json
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\bin\Debug\netcoreapp3.1\MHRSLite_EL.runtimeconfig.json
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\bin\Debug\netcoreapp3.1\MHRSLite_EL.runtimeconfig.dev.json
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\bin\Debug\netcoreapp3.1\MHRSLite_EL.dll
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\bin\Debug\netcoreapp3.1\MHRSLite_EL.pdb
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.csproj.AssemblyReference.cache
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.AssemblyInfoInputs.cache
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.AssemblyInfo.cs
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.csproj.CoreCompileInputs.cache
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.dll
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.pdb
+C:\Users\ŞeydaZenler\source\repos\MerkeziHekimRandevuSistemi\MHRSLite_EL\obj\Debug\netcoreapp3.1\MHRSLite_EL.genruntimeconfig.cache

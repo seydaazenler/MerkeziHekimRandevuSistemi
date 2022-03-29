@@ -180,7 +180,7 @@ namespace MHRSLite_UI.Controllers
                     if (_userManager.IsInRoleAsync(user, RoleNames.Passive.ToString()).Result)
                     {
                         await _userManager.RemoveFromRoleAsync(user, RoleNames.Passive.ToString());
-                        await _userManager.RemoveFromRoleAsync(user, RoleNames.Patient.ToString());
+                        await _userManager.AddToRoleAsync(user, RoleNames.Patient.ToString());
                     }
                     TempData["EmailConfirmedMessage"] = "Hesabınız aktifleşmiştir..";
                     return RedirectToAction("Login", "Account");
